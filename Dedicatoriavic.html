@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Victoria, mi amor y un recuerdo eterno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vinotinto: #4a0e2e;
+      --dorado: #ffd700;
+      --rosa: #ffcccc;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #4a0e2e, #2c0a1c);
+      color: var(--dorado);
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      margin: 20px 0;
+      color: var(--dorado);
+      text-shadow: 0 4px 15px rgba(255,215,0,0.6);
+      letter-spacing: 2px;
+    }
+
+    .heart { font-size: clamp(3.5rem, 12vw, 7rem); color: var(--rosa); margin: 20px 0; }
+
+    /* Carrusel con scroll snap (funciona bien en iPhone) */
+    .carousel-container {
+      margin: 30px 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .carousel-container::-webkit-scrollbar { display: none; }
+
+    .carousel {
+      display: flex;
+      gap: 0;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      height: 55vh;
+      scroll-snap-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.4);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .slide img,
+    .slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255,215,0,0.4);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--dorado);
+      transform: scale(1.3);
+    }
+
+    .poema-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255,215,0,0.2);
+    }
+
+    .poema-section h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 25px;
+      color: var(--dorado);
+    }
+
+    .poema {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;          /* más grande y elegante */
+      font-style: normal;
+      letter-spacing: 0.5px;      /* ligeramente pegada */
+      line-height: 1.6;           /* fluida y conectada */
+      white-space: pre-wrap;
+      text-align: center;         /* centrado para poesía romántica */
+      color: #fff8e1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .dedicatoria {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      margin: 50px auto;
+      max-width: 700px;
+      padding: 40px 20px;
+      border-top: 2px solid rgba(255,215,0,0.3);
+      letter-spacing: 1px;
+    }
+
+    #musicBtn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: 2.5rem;
+      background: transparent;
+      border: none;
+      color: #4a0e2e;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      z-index: 100;
+    }
+
+    #musicBtn.active { color: var(--dorado); transform: scale(1.15); }
+  </style>
+</head>
+<body>
+
+  <h1>Para Victoria, mi amor y un recuerdo eterno</h1>
+  <div class="heart">💞</div>
+
+  <div class="carousel-container" id="carousel">
+    <div class="carousel">
+      <div class="slide">
+        <img src="https://files.catbox.moe/mdiygw.heic" alt="Momento 1">
+      </div>
+      <div class="slide">
+        <img src="https://files.catbox.moe/58i4su.PNG" alt="Momento 2">
+      </div>
+      <div class="slide">
+        <video controls preload="none">
+          <source src="https://files.catbox.moe/ey12el.MOV" type="video/quicktime">
+        </video>
+      </div>
+      <div class="slide">
+        <video controls preload="none">
+          <source src="https://files.catbox.moe/j3uoib.MOV" type="video/quicktime">
+        </video>
+      </div>
+      <div class="slide">
+        <video controls preload="none">
+          <source src="https://files.catbox.moe/p5iyb0.mov" type="video/quicktime">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <section class="poema-section">
+    <h2>Nuestro Poema</h2>
+    <div class="poema">
+A veces solo quisiera olvidarte,
+pero no puedo olvidar todo lo que pude amarte.
+Y aunque tal vez seamos un punto y aparte,
+al infierno bajaría para poder rescatarte.
+
+Por qué a esta hora tus recuerdos son
+destellos de la luz que me daban tus ojos
+cuando contigo pasaba horas.
+
+Y si los sueños solo fueran sueños,
+dormiría en la eternidad 
+para así esta historia nunca acabar
+y solo mil otoños contigo disfrutar
+    </div>
+  </section>
+
+  <div class="dedicatoria">
+    Te amo con todo mi ser,<br>
+    hoy, mañana y por toda la eternidad.<br>
+    Eres mi juramento más hermoso.
+  </div>
+
+  <button id="musicBtn">🍓</button>
+
+  <audio id="myAudio" loop>
+    <source src="https://files.catbox.moe/g8d2g9.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const dotsContainer = document.getElementById('dots');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    // Crear puntos
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.onclick = () => carousel.scrollTo({ left: i * carousel.clientWidth, behavior: 'smooth' });
+      dotsContainer.appendChild(dot);
+    }
+
+    const dots = document.querySelectorAll('.dot');
+
+    // Actualizar punto activo
+    carousel.addEventListener('scroll', () => {
+      const index = Math.round(carousel.scrollLeft / carousel.clientWidth);
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    });
+
+    // Música
+    const audio = document.getElementById('myAudio');
+    const btn = document.getElementById('musicBtn');
+    let playing = false;
+
+    document.body.addEventListener('touchstart', () => {
+      if (!playing) {
+        audio.play().catch(() => {});
+        playing = true;
+        btn.classList.add('active');
+      }
+    }, { once: true });
+
+    btn.onclick = () => {
+      if (playing) {
+        audio.pause();
+        btn.classList.remove('active');
+      } else {
+        audio.play();
+        btn.classList.add('active');
+      }
+      playing = !playing;
+    };
+  </script>
+
+</body>
+</html>
